@@ -17,6 +17,11 @@ app.get('/api-endpoint', function(request, response) {
             contact: [ {id: 12345, name: "Jessie Cai111"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"}],
             show: true 
         };
+    
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    response.setHeader('Access-Control-Allow-Credentials', true);
 
     response.send(JSON.parse(JSON.stringify(jsonContent)));
     
