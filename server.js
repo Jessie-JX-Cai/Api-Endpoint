@@ -23,9 +23,10 @@ app.get('/api-endpoint', function(request, response) {
     response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     response.setHeader('Access-Control-Allow-Credentials', true);
-    response.setHeader('Content-Type','application/json;charset=UTF-8');
+    response.setHeader('Content-Type','text/plain;charset=UTF-8');
     // response.send(JSON.parse(JSON.stringify(jsonContent)));
-    response.send(JSON.parse(jsonContent));
+    //response.send(JSON.parse(jsonContent));
+    response.send(jsonContent);
     
 });
 
