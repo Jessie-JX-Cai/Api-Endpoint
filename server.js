@@ -31,9 +31,9 @@ app.get('/api-endpoint', function(request, response) {
     
 });
 
-// app.listen(app.get('port'), function () {
-//     console.log('Express server listening on port ' + app.get('port'));
-// });
+app.listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
+});
 
 
 // var express=require("express");//导入express
