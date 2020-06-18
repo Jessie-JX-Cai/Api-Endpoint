@@ -24,6 +24,19 @@ app.get('/api-third-endpoint', function(request, response) {
     
 });
 
+
+app.get('/api-types-endpoint', function(request, response) {
+    
+    var jsonContent = {data:{Task:"Tasks",Event:"Events",ContentDocumentLink:"Files | Notes",WorkOrder:"Work Orders",Case:"Cases",OpportunityContactRole:"Opportunities",CampaignMember:"Campaign Members",Asset:"Assets"}};
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    response.setHeader('Access-Control-Allow-Credentials', true);
+    response.setHeader('Content-Type','text/plain;charset=UTF-8');
+    response.send(JSON.parse(JSON.stringify(jsonContent)));
+    
+});
+
 app.get('/api-endpoint', function(request, response) {
 //     var nameString = request.query.name;
 //     var historyString = request.query.history;
