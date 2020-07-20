@@ -18,7 +18,7 @@ app.get('/api-relationship-endpoint', function(request, response) {
     response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     response.setHeader('Access-Control-Allow-Credentials', true);
     response.setHeader('Content-Type','text/plain;charset=UTF-8');
-    response.send(JSON.parse(JSON.stringify(jsonContent)));
+    response.send(JSON.parse(JSON.stringify(data)));
 });
 
 
