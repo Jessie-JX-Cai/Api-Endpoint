@@ -7,6 +7,21 @@ app.set('port', process.env.PORT || 5000);
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+app.get('/api-relationship-endpoint', function(request, response) {
+    
+    var data = {};
+    //var node = [{"id":1,"name":'cls.MUP',"shape":'circularImage',"image":this.Product,"type":"Product"},{"id":2,"name":'Stanley Ng',"shape":'circularImage',"image":this.AvatarMan,"type":"Person","point":'6215 CP','NPS':this.NPS_Detractor},{"id":3,"name":'Cherry Ho',"shape":'circularImage',"image":this.AvatarWoman,"type":"Person","point":'5000 CP','NPS':this.NPS_Passive},{"id":4,"name":'David Ng',"shape":'circularImage',"image":this.AvatarMan,"type":"Person","point":'1050 CP','NPS':this.NPS_Promoter},{"id":5,"name":'Wan Chai',"shape":'circularImage',"image":this.Home,type:"Address",Address_Detail:"Flat A, 34/F, Li Chat Garden, 1 Lit Chit Street, Wan Chai"},{"id":6,"name":'Broadband',"shape":'circularImage',"image":this.Product,"type":"Product"},{"id":7,"name":'DEL',"shape":'circularImage',"image":this.Product,"type":"Product"}];
+    var links = [{"source":1,"target":2,"type":'Master'},{"source":1,"target":3,"type":'Subsidiary'},{"source":1,"target":4,"type":'Subsidiary'},{"source":2,"target":1,"type":''},{"source":2,"target":4,"type":'Son'},{"source":2,"target":3,"type":'Husband'},{"source":2,"target":5,"type":'Home'},{"source":2,"target":6,"type":''},{"source":2,"target":7,"type":''},{"source":3,"target":1,"type":''},{"source":3,"target":2,"type":'Wife'},{"source":3,"target":5,"type":'Home'},{"source":4,"target":2,"type":'Father'},{"source":5,"target":6,"type":''},{"source":5,"target":7,"type":''}];
+    data.links = links;
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    response.setHeader('Access-Control-Allow-Credentials', true);
+    response.setHeader('Content-Type','text/plain;charset=UTF-8');
+    response.send(JSON.parse(JSON.stringify(jsonContent)));
+});
+
+
 app.get('/api-third-endpoint', function(request, response) {
 //     var nameString = request.query.name;
 //     var historyString = request.query.history;
@@ -66,30 +81,6 @@ app.listen(app.get('port'), function () {
     console.log('Express server listening on port ' + app.get('port'));
 });
 
-
-// var express=require("express");//导入express
-// var app = express();//实例化
-// app.set('port', process.env.PORT || 5000);
-// app.use(express.static("static"));//静态内容
- 
-// app.all('*',function(req,res,next){//跨域问题
-//     res.setHeader("Access-Control-Allow-Origin", "*");
-//     next();
-// });
- 
-// app.get("/api-endpoint",function(req,res){
-//     var jsonContent = { 
-//             imageUrl: "https://image.flaticon.com/icons/png/512/61/61456.png",
-//             contact: [ {id: 12345, name: "Jessie Cai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"},{id: 12346, name: "King King Lai"}],
-//             footprint: [{objectId:"00U1y000002SCDFEA4",parentObject:"Contact",detailField:"TRAVEL CLUB SIM",detailFieldLabel:"Subject",positionDateField:"StartDateTime",positionDateValue:"2020-06-01 00:00:00",objectName:"Event",fallbackTooltipField:"Description",fallbackTooltipValue:"This is a really important meeting. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea co...",drilldownId:"",tooltipId:"",type:"",icon:"",iconBackground:"#eb7092"},{objectId:"00U1y000002SCDGEA4",parentObject:"Contact",detailField:"IPHONE 11",detailFieldLabel:"Subject",positionDateField:"StartDateTime",positionDateValue:"2019-05-01 00:00:00",objectName:"Event",fallbackTooltipField:"Description",fallbackTooltipValue:"This is another really important meeting. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex...",drilldownId:"",tooltipId:"",type:"",icon:"",iconBackground:"#4ac076"},{objectId:"00U1y000002SCDHEA4",parentObject:"Contact",detailField:"SAMSUNG 55 QLED FLAT SMAR",detailFieldLabel:"Subject",positionDateField:"StartDateTime",positionDateValue:"2020-04-07 00:00:00",objectName:"Event",fallbackTooltipField:"Description",fallbackTooltipValue:"This is the final really important meeting. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ...",drilldownId:"",tooltipId:"",type:"",icon:"",iconBackground:"#eb7092"},{objectId:"00U1y000002SCDEEA4",parentObject:"Contact",detailField:"TravelCare Insurance",detailFieldLabel:"Subject",positionDateField:"StartDateTime",positionDateValue:"2019-11-14 00:00:00",objectName:"Event",fallbackTooltipField:"Description",fallbackTooltipValue:"Diwali celebrations in Mumbai. This is a basic description.",drilldownId:"",tooltipId:"",type:"",icon:"",iconBackground:"#eb7092"},{objectId:"00U1y000002SCDDEA4",parentObject:"Contact",detailField:"Xmas Dinner",detailFieldLabel:"Subject",positionDateField:"StartDateTime",positionDateValue:"2019-12-25 00:00:00",objectName:"Event",fallbackTooltipField:"Description",fallbackTooltipValue:"Xmas dinner celebrations with all my friends and family.",drilldownId:"",tooltipId:"",type:"",icon:"",iconBackground:"#4ac076"},{objectId:"5001y0000016ibZAAQ",parentObject:"Contact",detailField:"i-GUARD Phone & Tablet Repair Plan",detailFieldLabel:"Subject",positionDateField:"CreatedDate",positionDateValue:"2020-06-08 12:08:00",objectName:"Case",fallbackTooltipField:"",fallbackTooltipValue:"",drilldownId:"",tooltipId:"",type:"",icon:"",iconBackground:"#f2cf5b"}],  
-//             show: true 
-//         };
-//     res.send(jsonContent);
-// });
-
-// app.listen(app.get('port'), function () {
-//     console.log('Express server listening on port ' + app.get('port'));
-// });
  
  
  
