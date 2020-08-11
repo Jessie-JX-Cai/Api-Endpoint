@@ -23,6 +23,17 @@ app.get('/api-relationship-endpoint', function(request, response) {
     response.send(JSON.parse(JSON.stringify(data)));
 });
 
+app.get('/api-test', function(request, response) {
+    
+    var data = {'aaa':'111'};
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    response.setHeader('Access-Control-Allow-Credentials', true);
+    response.setHeader('Content-Type','text/plain;charset=UTF-8');
+    response.send(JSON.parse(JSON.stringify(data)));
+});
+
 
 // call by timelineService
 app.get('/api-third-endpoint', function(request, response) {
